@@ -18,13 +18,12 @@ self.addEventListener('install', event=>{
     const cacheProm = caches.open('estatico-v2')
     .then(cache=>{
         return cache.addAll([
-            '/',
             '/index.html',
             '/css/animate.css',
             '/css/fontawesome.css',
             '/css/templatemo_misc.css',
             '/css/templatemo_style.css',
-            'js/app.js'
+            '/js/app.js'
         ]);
     });
 /*
