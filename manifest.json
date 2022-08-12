@@ -1,0 +1,18 @@
+
+{
+    "name": "Curriculum Miguel Angel Velazquez Carranza",
+    "short_name": "Curriculum",
+    "theme_color": "#0086ff",
+    "background_color": "#0086ff",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "./",
+    "start_url": "./",
+    "icons": [
+        {
+            "src": "./images/logo.jpg",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
