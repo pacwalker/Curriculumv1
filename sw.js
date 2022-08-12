@@ -18,7 +18,7 @@ self.addEventListener('install', event=>{
     const cacheProm = caches.open('estatico-v2')
     .then(cache=>{
         return cache.addAll([
-            '/index.html',
+            './index.html',
             '/css/animate.css',
             '/css/fontawesome.css',
             '/css/templatemo_misc.css',
@@ -26,30 +26,10 @@ self.addEventListener('install', event=>{
             '/js/app.js'
         ]);
     });
-/*
-    const cacheInmutable = caches.open('inmutable-v1')
-    .then(cache=>{
-        return cache.add('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
-    })
-    event.waitUntil(Promise.all([cacheProm,cacheInmutable]));
-*/
+
 });
 
 self.addEventListener('fetch',event=>{
-    /*
-//4. Cache with network update
-if(event.request.url.includes('bootstrap')){
-    return event.respondWith(caches.match(event.request));
-}
-
-const respuesta = caches.open('estatico-v2').then(cache=>{
-    fetch(event.request).then(newResp=>{
-        cache.put(event.request,newResp);
-    });
-    return cache.match(event.request);
-});
-event.respondWith(respuesta);
-*/
     
    //3. Network with cache fallback
     const respuesta = fetch(event.request).then(resp=>{
@@ -63,28 +43,4 @@ event.respondWith(respuesta);
     return caches.match(event.request);
    });
 event.respondWith(respuesta);
-   
-   /* //2. Cache with network fallback
-   const respuesta =caches.match(event.request)
-   .then(resp=>{
-        if(resp) return resp;
-
-        //si no existe el recurso, tenemos que conectarnos a internet
-        console.log('No existe', event.request.url);
-        return fetch(event.request).then(newResp=>{
-            caches.open('cache-1')
-            .then(cache=>{
-                cache.put(event.request,newResp);
-                limpiarCache('dinamico-v1',4);
-            });
-            
-            return newResp.clone();
-        });
-   });
-   event.respondWith(respuesta);
-*/
-/*
-    //1. cache only
-    event.respondWith(caches.match(event.request));
-    */
 })
