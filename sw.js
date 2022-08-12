@@ -20,8 +20,10 @@ self.addEventListener('install', event=>{
         return cache.addAll([
             '/',
             '/index.html',
-            '/css/style.css',
-            '/images/pic.png',
+            '/css/animate.css',
+            '/css/fontawesome.css',
+            '/css/templatemo_misc.css',
+            '/css/templatemo_style.css',
             'js/app.js'
         ]);
     });
